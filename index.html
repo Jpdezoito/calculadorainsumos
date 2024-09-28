@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora de Insumos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        input {
+            margin: 10px 0;
+            padding: 10px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        table {
+            width: 80%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+    <script>
+        function adicionarCalculo() {
+            var insumo = document.getElementById("insumo").value;
+            var expressao = document.getElementById("expressao").value;
+            var resultado;
+
+            try {
+                resultado = eval(expressao);
+            } catch (e) {
+                resultado = "Erro: Expressão inválida";
+            }
+
+            var tabela = document.getElementById("tabelaResultados");
+            var linha = tabela.insertRow(-1);
+            var celulaInsumo = linha.insertCell(0);
+            var celulaExpressao = linha.insertCell(1);
+            var celulaResultado = linha.insertCell(2);
+
+            celulaInsumo.textContent = insumo;
+            celulaExpressao.textContent = expressao;
+            celulaResultado.textContent = resultado;
+
+            document.getElementById("insumo").value = "";
+            document.getElementById("expressao").value = "";
+        }
+    </script>
+</head>
+<body>
+    <h1>Calculadora de Insumos</h1>
+    <input type="text" id="insumo" placeholder="Digite o nome do insumo">
+    <input type="text" id="expressao" placeholder="Digite a expressão (ex: (10 + 10) * 27)">
+    <button onclick="adicionarCalculo()">Adicionar Calculo</button>
+
+    <table id="tabelaResultados">
+        <tr>
+            <th>Insumo</th>
+            <th>Expressão</th>
+            <th>Resultado</th>
+        </tr>
+    </table>
+</body>
+</html>
