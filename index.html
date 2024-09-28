@@ -14,15 +14,17 @@
         h1 {
             color: #333;
         }
-        input {
+        input, button {
             margin: 10px 0;
             padding: 10px;
-            width: 300px;
+            width: 100%;
+            max-width: 300px;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
         table {
-            width: 80%;
+            width: 100%;
+            max-width: 600px;
             margin-top: 20px;
             border-collapse: collapse;
         }
@@ -34,6 +36,14 @@
         th {
             background-color: #4CAF50;
             color: white;
+        }
+        @media (max-width: 600px) {
+            table {
+                font-size: 12px;
+            }
+            th, td {
+                padding: 5px;
+            }
         }
     </style>
     <script>
